@@ -1,0 +1,40 @@
+{
+    "Author": "YOUR NAME HERE",
+    "Yellow": {
+        "Connection": "YELLOW CONNECTION HERE",
+        "Words": [
+            "WORD1",
+            "WORD2",
+            "WORD3",
+            "WORD4"
+        ]
+    },
+    "Green": {
+        "Connection": "GREEN CONNECTION HERE",
+        "Words": [
+            "WORD1",
+            "WORD2",
+            "WORD3",
+            "WORD4"
+        ]
+    },
+    "Blue": {
+        "Connection": "BLUE CONNECTION HERE",
+        "Words": [
+            "WORD1",
+            "WORD2",
+            "WORD3",
+            "WORD4"
+        ]
+    },
+    "Purple": {
+        "Connection": "PURPLE CONNECTION HERE",
+        "Words": [
+            "WORD1",
+            "WORD2",
+            "WORD3",
+            "WORD4"
+        ]
+    }
+    
+}

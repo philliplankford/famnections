@@ -1,3 +1,34 @@
+header {
+    display: flex;
+    background-color: purple;
+    color: white;
+    align-items: center;
+    justify-content: center;
+    letter-spacing: 5px;
+}
+
+.word-grid {
+    display: grid;
+    border: 1px solid black;
+    border-radius: 5px;
+    padding: 5px;
+}
+
+.word-box {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: white;
+    height: 50px;
+    width: 50px;
+    border: 1px solid black;
+    border-radius: 5px;
+}
+
+.selected {
+    background-color: gray;
+}
+
 .yellow {
     background-color: yellow;
 }
@@ -9,4 +40,37 @@
 }
 .purple {
     background-color: purple;
+}
+
+.solution-box {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid black;
+    border-radius: 5px;
+}
+
+.solution-box p {
+    margin: 0;
+    padding: 0;
+}
+
+.guess-box {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.guess-num {
+    display: flex;
+}
+
+.guess-dot {
+    background-color: gray;
+    border-radius: 50%;
+    width: 15px;
+    height: 15px;
+    list-style: none;
+    margin: 5px;
 }

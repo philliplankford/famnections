@@ -1,55 +1,45 @@
+// import { author, puzzle }
 const colors = ["yellow","green","blue","purple"];
-const puzzle = {
-    "Author": "YOUR NAME HERE",
-    "Yellow": {
-        "Connection": "YELLOW CONNECTION HERE",
-        "Words": [
-            "WORD1",
-            "WORD2",
-            "WORD3",
-            "WORD4"
-        ]
-    },
-    "Green": {
-        "Connection": "GREEN CONNECTION HERE",
-        "Words": [
-            "WORD1",
-            "WORD2",
-            "WORD3",
-            "WORD4"
-        ]
-    },
-    "Blue": {
-        "Connection": "BLUE CONNECTION HERE",
-        "Words": [
-            "WORD1",
-            "WORD2",
-            "WORD3",
-            "WORD4"
-        ]
-    },
-    "Purple": {
-        "Connection": "PURPLE CONNECTION HERE",
-        "Words": [
-            "WORD1",
-            "WORD2",
-            "WORD3",
-            "WORD4"
-        ]
-    }
-    
+const connections = {
+    "yellow": "",
+    "green": "",
+    "blue": "",
+    "purple": ""
 }
-let allWords = [...puzzle.Yellow.Words,...puzzle.Green.Words,...puzzle.Blue.Words,...puzzle.Purple.Words];
-
-//{ 
-//color: "yellow",
-//word: "word"
-//}
-
-// id = color
-// 
+const puzzle = [
+    {"trinity": "yellow"},
+    {"triangle": "yellow"},
+    {"triple": "yellow"},
+    {"trifecta": "yellow"},
+    {"mouse": "green"},
+    {"bear": "green"},
+    {"fish": "green"},
+    {"thirst": "green"},
+    {"lamb": "blue"},
+    {"word": "blue"},
+    {"hand": "blue"},
+    {"wrath": "blue"},
+    {"neo": "purple"},
+    {"fresh": "purple"},
+    {"modern": "purple"},
+    {"contemporary": "purple"}
+] // id = index
 console.log(puzzle);
 
+const grid = document.querySelector('#game-grid');
+let selection = [];
+
+grid.addEventListener('click', (e) => {
+    if (e.target.className == "word-box" && !e.target.classList.contains('selected')){
+        if (selection.length < 4) {
+            e.target.classList.add('selected');
+            selection.push(e.target);
+            console.log(selection);
+        }
+    } else {
+        e.target.classList.remove('selected')
+    }
+});
 
 // insert each word randomly
 // make it a method so people can shuffle

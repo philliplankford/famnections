@@ -50,9 +50,7 @@ const countSelection = () => {
 const solve = () => {
     const color = puzzle.key[selection[0]];
     selection.forEach((word) => {
-        console.log(word);
         const ind = words.findIndex((e) => e === word);
-        console.log(ind);
         words.splice(ind,1);
     });
 
@@ -82,6 +80,7 @@ const logMistake = () => {
 };
 
 const checkConnection = () => {
+    if (selection.length === 4) {
     const colormatches = countSelection();
     if (Object.keys(colormatches).length === 2) {
         console.log("One away...");
@@ -92,6 +91,8 @@ const checkConnection = () => {
     } else { 
         logMistake();    
     }
+}
+
 };
 
 const appendWords = () => {
@@ -116,14 +117,14 @@ appendWords();
 
 /* LISTENERS */
 grid.addEventListener('click', (e) => {
-    if (mistakes >= 0) {
-        if (e.target.className == "word-box" && !e.target.classList.contains('selected')){
-            selection.push(e.target.textContent);
-            e.target.classList.add('selected');
-            if (selection.length === 4) {
+    if (mistakes > 0) {
+        if (e.target.className == "word-box" && !e.target.classList.contains('selected') && selection.length !== 4){
+            if (selection.length <= 4) {
+                selection.push(e.target.textContent);
+                e.target.classList.add('selected');
                 checkConnection();
             }
-        } else {
+        } else if (e.target.classList.contains('selected')) {
             e.target.classList.remove('selected')
             let ind = selection.findIndex((element) => element === e.target.textContent);
             selection.splice(ind, 1);

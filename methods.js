@@ -3,7 +3,7 @@ const puzzle = {
     connections: {
         "yellow": "3's",
         "green": "Types of Traps",
-        "blue": "___ Of God",
+        "blue": "____ Of God",
         "purple": "New"
     },
     key: {
@@ -13,7 +13,7 @@ const puzzle = {
         "trifecta": "yellow",
         "mouse": "green",
         "bear": "green",
-        "fish": "green",
+        "grease": "green",
         "thirst": "green",
         "lamb": "blue",
         "word": "blue",
@@ -25,7 +25,19 @@ const puzzle = {
         "contemporary": "purple"
     }
 };
-
+/*
+puzzle = {
+    "author": "NAME",
+    "yellow": {
+        connection: "3's",
+        words: ["trinity", "triangle", "triple", "trifecta"]
+    },
+    "green": {
+        connection: "Types of Traps",
+        words: ["mouse", "bear", "grease", "thirst"]
+    }
+}
+*/
 const unimoji = {
     "yellow": "🟨",
     "green": "🟩",
@@ -56,7 +68,7 @@ let lines = 0;
 const fade = (element) => {
     setTimeout(() => {
         element.style.display = 'none';
-    }, 1000);
+    }, 2000);
 };
 
 const displayHint = (text) => {
@@ -109,7 +121,6 @@ const logEmojis = () => {
 
 const copyEmoji= async () => {
     let text = emojigrid.innerHTML;
-    console.log("worked")
     try {
         await navigator.clipboard.writeText(text);
         console.log("Copied!");
@@ -174,7 +185,6 @@ const checkConnection = () => {
     if (selection.length === 4) {
     logEmojis();
     const colormatches = countSelection();
-    console.log(colormatches);
     if (colormatches[Object.keys(colormatches)[0]] === 3) { 
         // this is checking if there are two color but if u have two groups of two colors it triggers
         displayHint("One away...");
@@ -182,7 +192,6 @@ const checkConnection = () => {
     } else if (Object.keys(colormatches).length === 1) {
         solve();
     } else { 
-        displayHint("try again...");
         logMistake();
     }
 }

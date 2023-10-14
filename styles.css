@@ -116,6 +116,10 @@ button {
     min-height: 75px;
 }
 
+.function-buttons {
+    align-self: center;
+}
+
 .emojigrid {
     display: flex;
     flex-direction: column;

@@ -56,6 +56,9 @@ const authorname = document.querySelector("#authorname");
 const body = document.querySelector("#body");
 const hint = document.querySelector("#hint");
 
+const deselectbtn = document.querySelector("#deselect");
+const shufflebtn = document.querySelector("#shuffle");
+
 /* VARIABLES */
 let words = Object.keys(puzzle.key);
 let selection = [];
@@ -152,6 +155,27 @@ const copyEmojiString = async() =>{
 };
 
 copy.onclick = copyEmojiString;
+
+
+const deselectAll = () => {
+    const selectedElements = document.getElementsByClassName("selected");
+    const arrConv = [...selectedElements]
+    arrConv.forEach((element) => {
+        if (element.classList.contains("selected")) {
+            element.classList.remove("selected");
+        }
+    });
+
+};
+
+const shuffleAll = () => {
+    clearAllComponents(".word-box");
+    shuffle(words);
+    appendWords();
+};
+
+deselectbtn.onclick = deselectAll;
+shufflebtn.onclick = shuffleAll;
 
 const solve = () => {
     // which color is being solved atm

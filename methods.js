@@ -41,6 +41,8 @@ const home = document.querySelector("#home");
 const overlay = document.querySelector("#overlay");
 const emojigrid = document.querySelector("#emojigrid");
 const authorname = document.querySelector("#authorname");
+const body = document.querySelector("#body");
+const hint = document.querySelector("#hint");
 
 /* VARIABLES */
 let words = Object.keys(puzzle.key);
@@ -50,6 +52,18 @@ let mistakes = 4;
 let history = [];
 
 /* METHODS */
+const fade = (element) => {
+    setTimeout(() => {
+        element.style.display = 'none';
+    }, 1000);
+};
+
+const displayHint = (text) => {
+    hint.textContent = text;
+    hint.style.display = 'flex';
+    fade(hint);
+};
+
 const shuffle = (array) => {
     return array.sort(() => Math.random() - 0.5);
 };
@@ -117,7 +131,6 @@ const logMistake = () => {
     mistakes--;
     document.querySelectorAll(".guess-dot").forEach((e) => { e.remove(); })
     appendGuesses();
-    console.log("try again...");
     if (mistakes === 0) {
         showSolutions();
         overlayCheck();
@@ -129,14 +142,16 @@ const checkConnection = () => {
     if (selection.length === 4) {
     logEmojis();
     const colormatches = countSelection();
-    if (Object.keys(colormatches).length === 2) {
-        console.log("One away...");
+    console.log(colormatches);
+    if (colormatches[Object.keys(colormatches)[0]] === 3) { 
+        // this is checking if there are two color but if u have two groups of two colors it triggers
+        displayHint("One away...");
         logMistake();
     } else if (Object.keys(colormatches).length === 1) {
         solve();
-        console.log(`you found ${puzzle.connections[Object.keys(colormatches)[0]]}!`);
     } else { 
-        logMistake();    
+        displayHint("try again...");
+        logMistake();
     }
 }
 

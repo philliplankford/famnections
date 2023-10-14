@@ -67,11 +67,11 @@ let lines = 0;
 /* METHODS */
 const fade = (element) => {
     setTimeout(() => {
-        element.style.display = 'one';
+        element.style.display = 'none';
     }, 2000);
 };
 
-const delay = (time, func) => {
+const delay = (func, time) => {
     setTimeout(() => {
         func();
     }, time);
@@ -137,7 +137,7 @@ const copyEmoji= async () => {
 
 const copyEmojiString = async() =>{
     const mySmartTextarea = document.createElement('textarea');
-    shareString = "Fam-nections #1:\n" + shareString;
+    shareString = `I completed ${puzzle.author}'s puzzle!\n` + shareString;
     mySmartTextarea.innerHTML = shareString;
     mySmartTextarea.id = "textarea";
     let text = mySmartTextarea.value;
@@ -171,7 +171,7 @@ const solve = () => {
     selection = [];
 
     if (document.getElementsByClassName("word-box").length === 0) {
-        overlayCheck();
+        delay(overlayCheck,1500)
         revealAuthor();
     };
 };
@@ -182,7 +182,7 @@ const logMistake = () => {
     appendGuesses();
     if (mistakes === 0) {
         showSolutions();
-        overlayCheck();
+        delay(overlayCheck,1500);
         revealAuthor();
     };
 };
@@ -222,17 +222,15 @@ const appendGuesses = () => {
 };
 
 const overlayCheck = () => {
-    const seesaw = () => {
-        if(overlay.classList.contains('hidden')) {
-            overlay.classList.remove("hidden");
-        } else {overlay.classList.add("hidden"); 
-        }
+    if(overlay.classList.contains('hidden')) {
+        overlay.classList.remove("hidden");
+    } else {overlay.classList.add("hidden"); 
     }
-    delay(2000,seesaw);
 };
 
 const showSolutions = () => {
     clearAllComponents(".word-box");
+    clearAllComponents(".solution-box");
     Object.keys(puzzle.connections).forEach((color) => {
         const wordArr = Object.keys(puzzle.key).filter(key => puzzle.key[key] === color);
         const wordString = wordArr.join(", ");
@@ -242,7 +240,7 @@ const showSolutions = () => {
 };
 
 const revealAuthor = () => {
-    authorname.textContent = puzzle.author;
+    authorname.textContent = "  " + puzzle.author;
 };
 
 /* PROGRAM */

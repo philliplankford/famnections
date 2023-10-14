@@ -126,9 +126,10 @@ const copyEmojiString = async() =>{
     let text = mySmartTextarea.value;
     try {
         await navigator.clipboard.writeText(text);
-        console.log("Copied!");
+        copy.textContent = "COPIED!"
+        displayHint("Copied!");
     } catch (err) {
-        console.log("Failed to copy: ", err);
+        displayHint("Copy Failed: ", err);
     }
     mySmartTextarea.remove();
 };

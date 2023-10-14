@@ -67,9 +67,15 @@ let lines = 0;
 /* METHODS */
 const fade = (element) => {
     setTimeout(() => {
-        element.style.display = 'none';
+        element.style.display = 'one';
     }, 2000);
 };
+
+const delay = (time, func) => {
+    setTimeout(() => {
+        func();
+    }, time);
+}
 
 const displayHint = (text) => {
     hint.textContent = text;
@@ -216,10 +222,13 @@ const appendGuesses = () => {
 };
 
 const overlayCheck = () => {
-    if(overlay.classList.contains('hidden')) {
-        overlay.classList.remove("hidden");
-    } else {overlay.classList.add("hidden"); 
+    const seesaw = () => {
+        if(overlay.classList.contains('hidden')) {
+            overlay.classList.remove("hidden");
+        } else {overlay.classList.add("hidden"); 
+        }
     }
+    delay(2000,seesaw);
 };
 
 const showSolutions = () => {

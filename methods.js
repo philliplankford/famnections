@@ -25,14 +25,28 @@ const puzzle = {
         "contemporary": "purple"
     }
 };
+
+const unimoji = {
+    "yellow": "&#129000;",
+    "green": "&#129001;",
+    "blue": "&#128998;",
+    "purple": `&#129002;`
+}
+
 /* SELECTORS */
 const grid = document.querySelector('#game-grid');
-const guess = document.querySelector('#guesses')
+const guess = document.querySelector('#guesses');
+const copy = document.querySelector("#copybtn");
+const home = document.querySelector("#home");
+const overlay = document.querySelector("#overlay");
+const emojigrid = document.querySelector("#emojigrid");
 
 /* VARIABLES */
 let words = Object.keys(puzzle.key);
 let selection = [];
 let mistakes = 4;
+
+let history = [];
 
 /* METHODS */
 const shuffle = (array) => {
@@ -47,40 +61,70 @@ const countSelection = () => {
     return counts;
 };
 
-const solve = () => {
-    const color = puzzle.key[selection[0]];
-    selection.forEach((word) => {
-        const ind = words.findIndex((e) => e === word);
-        words.splice(ind,1);
-    });
+const clearAllComponents = (classname) => {
+    document.querySelectorAll(classname).forEach((e) => { e.remove(); });
+};
 
+const createSolutionBox = (color, wordstring) => {
     let solution = document.createElement("div");
     let con = document.createElement("p");
     let pieces = document.createElement("p");
 
     con.textContent = puzzle.connections[color];
     con.classList.add('stronk');
-    pieces.textContent = `${selection[0]}, ${selection[1]}, ${selection[2]}, ${selection[3]}`;
+    pieces.textContent = wordstring;
     solution.appendChild(con);
     solution.appendChild(pieces);
     solution.classList.add('solution-box', `${color}`);
-    document.querySelectorAll(".word-box").forEach((e) => { e.remove(); });
+    return solution
+};
 
+const logEmojis = () => {
+    const moji = document.createElement("p");
+    let str = "";
+    selection.forEach((word) => {
+        str += unimoji[puzzle.key[word]] + ' ';
+    });
+    moji.innerHTML = str;
+    emojigrid.appendChild(moji);
+};
+
+const solve = () => {
+    // which color is being solved atm
+    const color = puzzle.key[selection[0]];
+    // removing each word from the active array
+    selection.forEach((word) => {
+        const ind = words.findIndex((e) => e === word);
+        words.splice(ind,1);
+    });
+
+    clearAllComponents(".word-box");
+    const wordstring = `${selection[0]}, ${selection[1]}, ${selection[2]}, ${selection[3]}`;
+    const solution = createSolutionBox(color, wordstring);
     grid.appendChild(solution);
 
     appendWords();
     selection = [];
+
+    if (document.getElementsByClassName("word-box").length === 0) {
+        overlayCheck();
+    };
 };
 
 const logMistake = () => {
     mistakes--;
     document.querySelectorAll(".guess-dot").forEach((e) => { e.remove(); })
     appendGuesses();
-    console.log("try again..."); 
+    console.log("try again...");
+    if (mistakes === 0) {
+        showSolutions();
+        overlayCheck();
+    };
 };
 
 const checkConnection = () => {
     if (selection.length === 4) {
+    logEmojis();
     const colormatches = countSelection();
     if (Object.keys(colormatches).length === 2) {
         console.log("One away...");
@@ -112,6 +156,23 @@ const appendGuesses = () => {
     }
 };
 
+const overlayCheck = () => {
+    if(overlay.classList.contains('hidden')) {
+        overlay.classList.remove("hidden");
+    } else {overlay.classList.add("hidden"); 
+    }
+};
+
+const showSolutions = () => {
+    clearAllComponents(".word-box");
+    Object.keys(puzzle.connections).forEach((color) => {
+        const wordArr = Object.keys(puzzle.key).filter(key => puzzle.key[key] === color);
+        const wordString = wordArr.join(", ");
+        const solutionBox = createSolutionBox(color,wordString);
+        grid.appendChild(solutionBox);
+    });
+};
+
 /* PROGRAM */
 appendWords();
 
@@ -130,4 +191,8 @@ grid.addEventListener('click', (e) => {
             selection.splice(ind, 1);
         }
     }
+});
+
+home.addEventListener('click', (e) => {
+    overlayCheck();
 });

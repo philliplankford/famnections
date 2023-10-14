@@ -25,6 +25,40 @@ h2 {
     font-size: 1.1em;
 }
 
+button {
+    align-self: center;
+    background-color: #E8E8E8;
+    color: black;
+    padding: 16px;
+    box-shadow: none;
+    border-radius: 6px;
+    border: none;
+}
+
+.home {
+    background: none;
+	color: inherit;
+	border: none;
+	padding: 0;
+	font: inherit;
+	cursor: pointer;
+	outline: inherit;
+}
+
+.overlay {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    top: 60px;
+    width: 100vw;
+    height: 100vh;
+    background-color: white;
+}
+
+.hidden {
+    visibility: hidden;
+}
+
 .game-space {
     padding: 5px;
     text-transform: uppercase;
@@ -58,6 +92,16 @@ h2 {
     font-weight: 700;
     font-size: 10px;
     min-height: 75px;
+}
+
+.emojigrid {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.emojigrid p {
+    margin: 0 2px 0 0;
 }
 
 .selected {

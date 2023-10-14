@@ -27,10 +27,10 @@ const puzzle = {
 };
 
 const unimoji = {
-    "yellow": "&#129000;",
-    "green": "&#129001;",
-    "blue": "&#128998;",
-    "purple": `&#129002;`
+    "yellow": "🟨",
+    "green": "🟩",
+    "blue": "🟦",
+    "purple": `🟪`
 }
 
 /* SELECTORS */
@@ -50,7 +50,8 @@ let selection = [];
 let mistakes = 4;
 
 let history = [];
-
+let shareString = "";
+let lines = 0;
 /* METHODS */
 const fade = (element) => {
     setTimeout(() => {
@@ -99,10 +100,40 @@ const logEmojis = () => {
     let str = "";
     selection.forEach((word) => {
         str += unimoji[puzzle.key[word]] + ' ';
+        shareString += unimoji[puzzle.key[word]];
     });
+    shareString += "\n"
     moji.innerHTML = str;
     emojigrid.appendChild(moji);
 };
+
+const copyEmoji= async () => {
+    let text = emojigrid.innerHTML;
+    console.log("worked")
+    try {
+        await navigator.clipboard.writeText(text);
+        console.log("Copied!");
+    } catch (err) {
+        console.log("Failed to copy: ", err);
+    }
+};
+
+const copyEmojiString = async() =>{
+    const mySmartTextarea = document.createElement('textarea');
+    shareString = "Fam-nections #1:\n" + shareString;
+    mySmartTextarea.innerHTML = shareString;
+    mySmartTextarea.id = "textarea";
+    let text = mySmartTextarea.value;
+    try {
+        await navigator.clipboard.writeText(text);
+        console.log("Copied!");
+    } catch (err) {
+        console.log("Failed to copy: ", err);
+    }
+    mySmartTextarea.remove();
+};
+
+copy.onclick = copyEmojiString;
 
 const solve = () => {
     // which color is being solved atm

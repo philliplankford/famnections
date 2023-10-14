@@ -1,5 +1,5 @@
 const puzzle = {
-    author: "YOUR NAME HERE",
+    author: "Phillip",
     connections: {
         "yellow": "3's",
         "green": "Types of Traps",

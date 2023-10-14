@@ -40,6 +40,7 @@ const copy = document.querySelector("#copybtn");
 const home = document.querySelector("#home");
 const overlay = document.querySelector("#overlay");
 const emojigrid = document.querySelector("#emojigrid");
+const authorname = document.querySelector("#authorname");
 
 /* VARIABLES */
 let words = Object.keys(puzzle.key);
@@ -108,6 +109,7 @@ const solve = () => {
 
     if (document.getElementsByClassName("word-box").length === 0) {
         overlayCheck();
+        revealAuthor();
     };
 };
 
@@ -119,6 +121,7 @@ const logMistake = () => {
     if (mistakes === 0) {
         showSolutions();
         overlayCheck();
+        revealAuthor();
     };
 };
 
@@ -171,6 +174,10 @@ const showSolutions = () => {
         const solutionBox = createSolutionBox(color,wordString);
         grid.appendChild(solutionBox);
     });
+};
+
+const revealAuthor = () => {
+    authorname.textContent = puzzle.author;
 };
 
 /* PROGRAM */

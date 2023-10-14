@@ -48,11 +48,18 @@ button {
 .overlay {
     display: flex;
     flex-direction: column;
+    align-items: center;
     position: absolute;
-    top: 60px;
-    width: 100vw;
-    height: 100vh;
+    border-radius: 6px;
+    top: 100px;
+    right: 12vw;
+    width: 75vw;
+    height: 60vh;
+    min-height: 500px;
     background-color: white;
+    box-shadow: -1px 10px 5px 7px rgba(0,0,0,0.55);
+    -webkit-box-shadow: -1px 10px 5px 7px rgba(0,0,0,0.55);
+    -moz-box-shadow: -1px 10px 5px 7px rgba(0,0,0,0.55);
 }
 
 .hidden {
@@ -147,6 +154,14 @@ button {
     height: 15px;
     list-style: none;
     margin: 5px;
+}
+
+.authorsection {
+    display: flex;
+}
+
+.authorsection p {
+    margin: 0;
 }
 
 

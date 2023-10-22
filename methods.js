@@ -229,6 +229,7 @@ const checkConnection = () => {
     } else if (Object.keys(colormatches).length === 1) {
         solve();
     } else { 
+        displayHint("Try Again...");
         logMistake();
     }
 }
@@ -239,11 +240,11 @@ const appendWords = () => {
     shuffle(words).forEach((word) => {
         let box = document.createElement("div");
         console.log(`${word} is ${word.length} letters long!`)
+        box.textContent = word;
+        box.classList.add('word-box');
         if (word.length > 7) {
             box.classList.add('long-word');
         }
-        box.textContent = word;
-        box.classList.add('word-box');
         grid.appendChild(box);
     });
 };
@@ -284,7 +285,7 @@ appendWords();
 /* LISTENERS */
 grid.addEventListener('click', (e) => {
     if (mistakes > 0) {
-        if (e.target.className == "word-box" && !e.target.classList.contains('selected') && selection.length !== 4){
+        if (e.target.classList.contains("word-box") && !e.target.classList.contains('selected') && selection.length !== 4){
             if (selection.length <= 4) {
                 selection.push(e.target.textContent);
                 e.target.classList.add('selected');

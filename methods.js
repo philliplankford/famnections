@@ -58,6 +58,7 @@ const hint = document.querySelector("#hint");
 
 const deselectbtn = document.querySelector("#deselect");
 const shufflebtn = document.querySelector("#shuffle");
+const submitbtn = document.querySelector("#submit");
 
 /* VARIABLES */
 let words = Object.keys(puzzle.key);
@@ -88,6 +89,10 @@ const displayHint = (text) => {
 
 const shuffle = (array) => {
     return array.sort(() => Math.random() - 0.5);
+};
+
+const submit = () => {
+    checkConnection();
 };
 
 const countSelection = () => {
@@ -177,6 +182,7 @@ const shuffleAll = () => {
 
 deselectbtn.onclick = deselectAll;
 shufflebtn.onclick = shuffleAll;
+submitbtn.onclick = submit;
 
 const solve = () => {
     // which color is being solved atm
@@ -282,7 +288,7 @@ grid.addEventListener('click', (e) => {
             if (selection.length <= 4) {
                 selection.push(e.target.textContent);
                 e.target.classList.add('selected');
-                checkConnection();
+                // checkConnection();
             }
         } else if (e.target.classList.contains('selected')) {
             e.target.classList.remove('selected')

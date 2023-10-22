@@ -232,6 +232,10 @@ const checkConnection = () => {
 const appendWords = () => {
     shuffle(words).forEach((word) => {
         let box = document.createElement("div");
+        console.log(`${word} is ${word.length} letters long!`)
+        if (word.length > 7) {
+            box.classList.add('long-word');
+        }
         box.textContent = word;
         box.classList.add('word-box');
         grid.appendChild(box);

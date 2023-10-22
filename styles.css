@@ -35,6 +35,10 @@ button {
     border: none;
 }
 
+#submit {
+    margin-left: 15px;
+}
+
 .home {
     background: none;
 	color: inherit;
@@ -195,4 +199,8 @@ button {
 }
 .purple {
     background-color: #bc6fc4;
+}
+
+.long-word {
+    font-size: 7px;
 }

@@ -165,6 +165,7 @@ const deselectAll = () => {
             element.classList.remove("selected");
         }
     });
+    selection = [];
 
 };
 

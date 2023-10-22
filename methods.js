@@ -1,28 +1,28 @@
 const puzzle = {
-    author: "Phillip",
+    author: "Dad",
     connections: {
-        "yellow": "3's",
-        "green": "Types of Traps",
-        "blue": "____ Of God",
-        "purple": "New"
+        "yellow": "Things that pop!",
+        "green": "Dark Things",
+        "blue": "Famous Jack's",
+        "purple": "Names for Money"
     },
     key: {
-        "trinity": "yellow",
-        "triangle": "yellow",
-        "triple": "yellow",
-        "trifecta": "yellow",
-        "mouse": "green",
-        "bear": "green",
-        "grease": "green",
-        "thirst": "green",
-        "lamb": "blue",
-        "word": "blue",
-        "hand": "blue",
-        "wrath": "blue",
-        "neo": "purple",
-        "fresh": "purple",
-        "modern": "purple",
-        "contemporary": "purple"
+        "Balloon": "yellow",
+        "Bubble": "yellow",
+        "Cork": "yellow",
+        "Corn": "yellow",
+        "Tunnel": "green",
+        "Night": "green",
+        "Chocolate": "green",
+        "Mood": "green",
+        "White": "blue",
+        "LaLane": "blue",
+        "Frost": "blue",
+        "Black": "blue",
+        "Cabbage": "purple",
+        "Bread": "purple",
+        "Dough": "purple",
+        "Benny": "purple"
     }
 };
 /*

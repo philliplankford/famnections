@@ -1,30 +1,31 @@
 const puzzle = {
-    author: "Dad",
+    author: "Caitlin",
     connections: {
-        "yellow": "Things that pop!",
-        "green": "Dark Things",
-        "blue": "Famous Jack's",
-        "purple": "Names for Money"
+        "yellow": "PITTED FRUITS",
+        "green": "HOLIDAY DAYS",
+        "blue": "TYPES OF SHOE",
+        "purple": "___ ROAD"
     },
     key: {
-        "Balloon": "yellow",
-        "Bubble": "yellow",
-        "Cork": "yellow",
-        "Corn": "yellow",
-        "Tunnel": "green",
-        "Night": "green",
-        "Chocolate": "green",
-        "Mood": "green",
-        "White": "blue",
-        "LaLane": "blue",
-        "Frost": "blue",
-        "Black": "blue",
-        "Cabbage": "purple",
-        "Bread": "purple",
-        "Dough": "purple",
-        "Benny": "purple"
+        "PEACH": "yellow",
+        "PLUM": "yellow",
+        "CHERRY": "yellow",
+        "APRICOT": "yellow",
+        "CHRISTMAS": "green",
+        "BOXING": "green",
+        "INDEPENDENCE": "green",
+        "MAY": "green",
+        "TRAINER": "blue",
+        "PUMP": "blue",
+        "FLAT": "blue",
+        "HEEL": "blue",
+        "ROCKY": "purple",
+        "COUNTRY": "purple",
+        "HIGH": "purple",
+        "PIT": "purple"
     }
 };
+
 /*
 puzzle = {
     "author": "NAME",
